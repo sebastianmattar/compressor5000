@@ -1,6 +1,5 @@
 #!/bin/bash
 
-outlines="false"
 jobs=5
 compressionLevel=7
 
@@ -9,9 +8,8 @@ cd tiles
 print_usage()
 {
    # Display Help
-   echo Syntax: '[o|h]'
+   echo Syntax: '[h]'
    echo options:
-   echo o     outlines - default $outlines
    echo h     Print this help
    echo
 }
@@ -20,17 +18,9 @@ print_usage()
 while getopts o:h flag
 do
     case $flag in
-        o) outlines=$OPTARG;;
         h) print_usage; exit 0;;
     esac
 done
-
-echo Outlines: $outlines
-
-if($outlines)
-then
-  compressionLevel=0
-fi
 
 compressB3dm()
 {
